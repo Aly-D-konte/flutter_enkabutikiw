@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_frontend/Models/Boutique_data.dart';
+import 'package:flutter_frontend/pages/Auhentification/Login.dart';
 import 'package:flutter_frontend/pages/Boutique.dart';
 import 'package:flutter_frontend/pages/DELL.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: const Color.fromARGB(255, 240, 240, 240),
         ),
         routes: {
-          "/": (context) => const pages(),
+          "/": (context) => const LoginWidget(),
          // "itemPage": (context) => ItemPage()
         },
       ),
