@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_frontend/Controllers/auth_controller.dart';
+import 'package:flutter_frontend/pages/Boutique.dart';
 
 class LoginWidget extends StatelessWidget {
   const LoginWidget({Key? key}) : super(key: key);
@@ -84,6 +85,7 @@ class LoginWidget extends StatelessWidget {
                 ),
                   onPressed: (){
                   authController.LoginUser(usernameController.text, passwordController.text);
+                  //Navigator.push(context, MaterialPageRoute(builder: (context)=>PageBoutique()));
                   }, child:  Text('Connecter',
               style: TextStyle(
                 backgroundColor: Colors.orangeAccent,

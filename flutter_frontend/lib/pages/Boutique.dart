@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../Models/Boutique_data.dart';
 import '../Models/boutique.dart';
-import '../Services/database_services.dart';
+import '../Services/Boutique_services.dart';
 import 'boutique_affichage.dart';
 
 class PageBoutique extends StatefulWidget {

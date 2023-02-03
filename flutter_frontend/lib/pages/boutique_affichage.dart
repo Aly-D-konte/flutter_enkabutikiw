@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_frontend/Models/Boutique_data.dart';
@@ -14,8 +15,8 @@ class AffichageBoutique extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  SingleChildScrollView(
-       child:  Column(
-         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+       child:  Wrap(
+         direction: Axis.horizontal,
          children: [
            Row(
              children: [
@@ -29,16 +30,19 @@ class AffichageBoutique extends StatelessWidget {
                        decoration: BoxDecoration(
                            color: Colors.white,
                            borderRadius: BorderRadius.circular(15)),
-                       height: 200,
+                      // height: 200,
                        width: MediaQuery.of(context).size.width * .45,
                        child: Column(
                          children: [
                            Container(
-                             height: 100,
-                             child: Image.asset(
-                               "assets/images/images2.jpg",
-                               width: 200,
-                               fit: BoxFit.cover,
+                             margin: const EdgeInsets.all(10),
+                             child: CachedNetworkImage(
+                               //fit: BoxFit.cover,
+                               height: 120,
+                               width: 120,
+                               imageUrl: modelBoutiques.image,
+                               placeholder: (context, url) => new CircularProgressIndicator(),
+                               errorWidget: (context, url, error) => new Icon(Icons.electric_rickshaw_sharp),
                              ),
                            ),
                             Text(

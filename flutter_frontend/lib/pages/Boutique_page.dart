@@ -4,7 +4,7 @@ import 'package:flutter_frontend/Models/Boutique_data.dart';
 import 'package:provider/provider.dart';
 
 import '../Models/boutique.dart';
-import '../Services/database_services.dart';
+import '../Services/Boutique_services.dart';
 import 'boutique_affichage.dart';
 
 class PageBoutiques extends StatefulWidget {

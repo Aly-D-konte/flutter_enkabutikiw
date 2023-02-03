@@ -7,6 +7,9 @@ import '../Models/Utilisateur.dart';
 import 'globals.dart';
 
 class DatabaseServices {
+
+
+  //La partie boutique debut
   static Future<ModelBoutiques> ajoutBoutique(String nom, String description,
       String adresse, String image, bool etat, String user) async {
     Map data = {
@@ -46,4 +49,11 @@ class DatabaseServices {
     return modelboutiques;
     print("ca marche");
   }
+
+
+  //finnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+
+//La partie produits debuttttttttttttttttttttttttttt
+
+
 }
