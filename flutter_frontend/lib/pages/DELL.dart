@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_frontend/pages/Page%20produit.dart';
+import 'package:flutter_frontend/pages/PageCategorie.dart';
 
 
 import 'Boutique_page.dart';
@@ -15,7 +16,7 @@ class pages extends StatelessWidget {
         child: ElevatedButton(
           child: Text("cvbn,;,nbvbn,,nbvcvb"),
           onPressed: (){
-            Navigator.of(context).push(MaterialPageRoute(builder: (_)=> PageBoutiques()));
+            Navigator.of(context).push(MaterialPageRoute(builder: (_)=> PageCategorie()));
           },
         ),
       ),

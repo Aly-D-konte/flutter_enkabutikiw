@@ -1,6 +1,6 @@
 class ModelCategorie{
   int id;
-  final String? nom;
+  final String nom;
   final String image;
 
   ModelCategorie(

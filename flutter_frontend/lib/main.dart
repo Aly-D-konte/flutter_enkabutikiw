@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<BoutiqueData>(
-      create:(context) => BoutiqueData(),
+      create: (context) => BoutiqueData(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           "/": (context) => const pages(),
-         // "itemPage": (context) => ItemPage()
+          // "itemPage": (context) => ItemPage()
         },
       ),
     );

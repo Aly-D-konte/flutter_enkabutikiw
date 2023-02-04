@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_frontend/Models/ModelCategorie.dart';
 import 'package:flutter_frontend/Models/boutique.dart';
 
 import '../Services/Boutique_services.dart';
@@ -11,6 +12,7 @@ class BoutiqueData extends ChangeNotifier {
   List<ModelBoutiques> modelboutiques = [];
 
   List<ModelProduit> modelProduits = [];
+  List<ModelCategorie> modelCategories =[];
   
 
 //La partie ajout
