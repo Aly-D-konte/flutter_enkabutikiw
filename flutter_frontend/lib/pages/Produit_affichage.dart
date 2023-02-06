@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_frontend/Models/Boutique_data.dart';
 import 'package:flutter_frontend/Models/ModelProduit.dart';
+import 'package:flutter_frontend/pages/DetailProduit_page.dart';
 
 class ProduitAffichage extends StatefulWidget {
   const ProduitAffichage({Key? key, required this.modelProduit, required this.boutiqueData}) : super(key: key);
@@ -18,18 +19,10 @@ class _ProduitAffichageState extends State<ProduitAffichage> {
   ScrollController _controller = ScrollController();
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      childAspectRatio: 0.68,
-      //Faire scroller le contenu seulement
-      //  physics: const NeverScrollableScrollPhysics(),
-      crossAxisCount: 2,
-      shrinkWrap: true,
-      //Cet controller permet de gerer le scroll
-      controller: _controller,
-      children: [
-          Container(
-            padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
-            margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+    return Container(
+            padding: const EdgeInsets.only(left: 10, right: 10, top: 5),
+            margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+            width: MediaQuery.of(context).size.width / 2.5,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),
@@ -40,7 +33,7 @@ class _ProduitAffichageState extends State<ProduitAffichage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      padding: const EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -54,8 +47,15 @@ class _ProduitAffichageState extends State<ProduitAffichage> {
                 InkWell(
                   onTap: () {
                     //pour afficher l'element selectionné
-                    Navigator.pushNamed(context, "itemPage");
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) => DetailProduit(modelProduit: widget.modelProduit)
+                    ));
                   },
+                  // onTap: () {
+                  //   //pour afficher l'element selectionné
+                  //   Navigator.pushNamed(context, "itemPage");
+                  //
+                  // },
                   child: Container(
                     margin: const EdgeInsets.all(10),
                     child: CachedNetworkImage(
@@ -88,8 +88,7 @@ class _ProduitAffichageState extends State<ProduitAffichage> {
                 )
               ],
             ),
-          ),
-      ],
+
     );
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_frontend/Models/Boutique_data.dart';
 import 'package:flutter_frontend/pages/Auhentification/Login.dart';
 import 'package:flutter_frontend/pages/Boutique.dart';
-import 'package:flutter_frontend/pages/DELL.dart';
+ import 'package:flutter_frontend/pages/splashscreen.dart';
 import 'package:provider/provider.dart';
 
 void main() {

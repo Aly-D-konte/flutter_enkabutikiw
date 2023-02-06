@@ -57,15 +57,19 @@ class _ProduitPageState extends State<ProduitPage> {
             Flexible(
               child: Consumer<BoutiqueData>(
                   builder: (context, boutiqueData, child) {
-                    return ListView.builder(
-                        itemCount: boutiqueData.modelProduits.length,
-                        itemBuilder: (context, index) {
-                          ModelProduit modelProduits = boutiqueData.modelProduits[index];
-                          return ProduitAffichage(
-                            modelProduit: modelProduits,
-                            boutiqueData: boutiqueData,
-                          );
-                        });
+                    return SingleChildScrollView(
+                      child: Wrap(
+                        direction: Axis.horizontal,
+                        //alignment: WrapAlignment.spaceAround,
+                        children: [
+                          for(int i = 0; i < modelProduits.length; i++)
+                        ProduitAffichage(
+                        modelProduit: modelProduits[i],
+                        boutiqueData: boutiqueData,
+                      )
+                      ],
+                      ),
+                    );
                   }),
             )
           ],

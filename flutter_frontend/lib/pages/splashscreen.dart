@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_frontend/pages/Page%20produit.dart';
-import 'package:flutter_frontend/pages/PageCategorie.dart';
 
-
-import 'Boutique_page.dart';
+import 'Menubottom/menu.dart';
+import 'Page produit.dart';
 
 class pages extends StatelessWidget {
   const pages({Key? key}) : super(key: key);
@@ -11,12 +9,12 @@ class pages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.red,
+      color: Colors.blueAccent,
       child: Center(
         child: ElevatedButton(
-          child: Text("cvbn,;,nbvbn,,nbvcvb"),
+          child: Text("Commencer"),
           onPressed: (){
-            Navigator.of(context).push(MaterialPageRoute(builder: (_)=> PageCategorie()));
+            Navigator.of(context).push(MaterialPageRoute(builder: (_)=> Homepage()));
           },
         ),
       ),
