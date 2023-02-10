@@ -51,9 +51,9 @@ class ProduitServices{
     for (Map produitMap in responseList) {
       ModelProduit modelProduit = ModelProduit.fromMap(produitMap);
       modelProduits.add(modelProduit);
-      print("ca marche");
+     // print("ca marche");
       print(responseList);
-      print("ca marche");
+     // print("ca marche");
     }
     return modelProduits;
 

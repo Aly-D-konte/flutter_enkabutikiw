@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_frontend/Models/Boutique_data.dart';
-import 'package:flutter_frontend/pages/Auhentification/Login.dart';
-import 'package:flutter_frontend/pages/Boutique.dart';
- import 'package:flutter_frontend/pages/splashscreen.dart';
+import 'package:flutter_frontend/pages/Boutique/Boutique.dart';
+import 'package:flutter_frontend/pages/splashscreen.dart';
 import 'package:provider/provider.dart';
+
+import 'pages/je sais.dart';
 
 void main() {
   runApp(const MyApp());

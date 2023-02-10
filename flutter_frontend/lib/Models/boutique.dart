@@ -1,6 +1,6 @@
 class ModelBoutiques {
   int id;
-  final String? nom;
+  final String nom;
   final String description;
   final String adresse;
   final String image;

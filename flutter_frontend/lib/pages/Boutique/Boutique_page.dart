@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_frontend/Models/Boutique_data.dart';
+import 'package:flutter_frontend/Models/boutique.dart';
+import 'package:flutter_frontend/Services/Boutique_services.dart';
 import 'package:provider/provider.dart';
 
-import '../Models/boutique.dart';
-import '../Services/Boutique_services.dart';
+
 import 'boutique_affichage.dart';
 
 class PageBoutiques extends StatefulWidget {
@@ -15,7 +16,7 @@ class PageBoutiques extends StatefulWidget {
 }
 
 class _PageBoutiquesState extends State<PageBoutiques> {
-  List<ModelBoutiques>? modelboutiques;
+  List<ModelBoutiques> modelboutiques = [];
 
   getBoutique() async{
     modelboutiques = await DatabaseServices.getBoutiques();
@@ -41,12 +42,7 @@ class _PageBoutiquesState extends State<PageBoutiques> {
         ),
       )
         : Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Boutiques (${Provider.of<BoutiqueData>(context).modelboutiques.length}) '
-          ),
-          centerTitle: true,
-        ),
+       
         body: Column(
           children: [
             Container(
@@ -56,16 +52,23 @@ class _PageBoutiquesState extends State<PageBoutiques> {
             Flexible(
               child: Consumer<BoutiqueData>(
                   builder: (context, boutiqueData, child) {
-                return ListView.builder(
-                    itemCount: boutiqueData.modelboutiques.length,
-                    itemBuilder: (context, index) {
-                      ModelBoutiques modelBoutiques = boutiqueData.modelboutiques[index];
-                      return AffichageBoutique(
-                        modelBoutiques: modelBoutiques,
+                return SingleChildScrollView(
+
+                  child: Wrap(
+                    direction: Axis.horizontal,
+                    children: [
+                      for(int i = 0; i < modelboutiques.length; i++)
+                      AffichageBoutique(
+                        modelBoutique: modelboutiques[i],
                         boutiqueData: boutiqueData,
-                      );
-                    });
-              }),
+                      )
+                    ],
+                  ),
+                );
+
+               
+              }
+              ),
             )
           ],
         )

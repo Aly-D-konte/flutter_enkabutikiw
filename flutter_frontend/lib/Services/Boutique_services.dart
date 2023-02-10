@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter_frontend/Models/boutique.dart';
 import 'package:http/http.dart' as http;
 
-import '../Models/Utilisateur.dart';
 import 'globals.dart';
 
 class DatabaseServices {

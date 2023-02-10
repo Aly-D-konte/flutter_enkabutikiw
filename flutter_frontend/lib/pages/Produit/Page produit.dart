@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_frontend/Models/Boutique_data.dart';
+import 'package:flutter_frontend/Models/ModelProduit.dart';
 import 'package:flutter_frontend/Services/Produit_service.dart';
 import 'package:provider/provider.dart';
 
-import '../Models/Boutique_data.dart';
-import '../Models/ModelProduit.dart';
 import 'Produit_affichage.dart';
 
 
@@ -42,12 +42,7 @@ class _ProduitPageState extends State<ProduitPage> {
     )
 
     :Scaffold(
-      appBar: AppBar(
-        title: Text(
-            'Produits (${Provider.of<BoutiqueData>(context).modelProduits.length}) '
-        ),
-        centerTitle: true,
-      ),
+     
         body: Column(
           children: [
             Container(
