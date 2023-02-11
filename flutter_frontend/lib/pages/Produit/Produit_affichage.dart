@@ -1,9 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_frontend/Controllers/Produit/produit_quantite.dart';
 import 'package:flutter_frontend/Models/Boutique_data.dart';
 import 'package:flutter_frontend/Models/ModelProduit.dart';
 import 'package:flutter_frontend/pages/Produit/DetailProduit_affichage.dart';
 import 'package:flutter_frontend/pages/Produit/produit_detail_page.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class ProduitAffichage extends StatefulWidget {
   const ProduitAffichage(
@@ -19,7 +22,9 @@ class ProduitAffichage extends StatefulWidget {
 class _ProduitAffichageState extends State<ProduitAffichage> {
   //Cet controller permet de gerer le scroll
 
-  ScrollController _controller = ScrollController();
+  final ScrollController _controller = ScrollController();
+  ProduitQuantiteController produitQuantiteController =
+      Get.put(ProduitQuantiteController());
 
   @override
   Widget build(BuildContext context) {
@@ -60,8 +65,8 @@ class _ProduitAffichageState extends State<ProduitAffichage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => DetailProduit(modelProduit: widget.modelProduit)
-                            ),
+                                builder: (context) => DetailProduit(
+                                    modelProduit: widget.modelProduit)),
                           );
                         },
                         child: Container(
@@ -83,7 +88,7 @@ class _ProduitAffichageState extends State<ProduitAffichage> {
                         alignment: Alignment.center,
                         child: Text(
                           widget.modelProduit.nom,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.normal,
                           ),
