@@ -10,9 +10,9 @@ class ModelProduit {
   final String modele;
   final String capacite;
   final String image;
-  //final int? quantiteDisponible;
+  final int? quantiteDisponible;
   final String type;
-  //final int? modelCategorie;
+  final ModelCategorie? modelCategorie;
   //final int? user;
   //final int? boutiqueid;
 
@@ -27,9 +27,9 @@ class ModelProduit {
       this.modele,
       this.capacite,
       this.image,
-     // this.quantiteDisponible,
+     this.quantiteDisponible,
       this.type,
-     // this.modelCategorie,
+      this.modelCategorie,
      // this.user,
      // this.boutiqueid,
   );
@@ -44,9 +44,9 @@ class ModelProduit {
       json['modele'],
       json['capacite'],
       json['image'],
-      //json['quantiteDisponible'],
-      json['type']
-      //json['modelCategorie'],
+      json['quantiteDisponible'],
+      json['type'],
+      json['modelCategorie'],
       //json['user'],
       //json['boutiqueid']
         );

@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_frontend/pages/Page%20produit.dart';
 
-
-import 'Boutique_page.dart';
-
+import 'Auhentification/Login.dart';
 class pages extends StatelessWidget {
   const pages({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.red,
+      color: Colors.blueAccent,
       child: Center(
         child: ElevatedButton(
-          child: Text("cvbn,;,nbvbn,,nbvcvb"),
-          onPressed: (){
-            Navigator.of(context).push(MaterialPageRoute(builder: (_)=> PageBoutiques()));
+          child: const Text("Commencer"),
+          onPressed: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (_) => const LoginWidget()));
           },
         ),
       ),

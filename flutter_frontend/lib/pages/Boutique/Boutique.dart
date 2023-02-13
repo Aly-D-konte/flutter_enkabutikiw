@@ -2,12 +2,13 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_frontend/pages/Boutique/boutique_affichage.dart';
+import 'package:flutter_frontend/pages/Menu/MenuAppBar.dart';
 import 'package:provider/provider.dart';
 
-import '../Models/Boutique_data.dart';
-import '../Models/boutique.dart';
-import '../Services/Boutique_services.dart';
-import 'boutique_affichage.dart';
+import '../../Models/Boutique_data.dart';
+import '../../Models/boutique.dart';
+import '../../Services/Boutique_services.dart';
 
 class PageBoutique extends StatefulWidget {
   const PageBoutique({super.key});
@@ -42,13 +43,15 @@ class _PageBoutiqueState extends State<PageBoutique> {
       ),
     )
         : Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Boutiques  (${Provider.of<BoutiqueData>(context).modelboutiques.length})',
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.amberAccent,
-      ),
+     // appBar: AppBar(const HomeAppBar())
+      
+      //AppBar(
+      //  title: Text(
+        //  'Boutiques  (${Provider.of<BoutiqueData>(context).modelboutiques.length})',
+       // ),
+      //  centerTitle: true,
+      //  backgroundColor: Colors.amberAccent,
+     // ),
         body: Column(
           children: [
             Container(
@@ -65,7 +68,7 @@ class _PageBoutiqueState extends State<PageBoutique> {
                   itemBuilder: (context, index) {
                      ModelBoutiques boutique = boutiqueData.modelboutiques[index];
                     return AffichageBoutique(
-                       modelBoutiques: boutique,
+                       modelBoutique: boutique,
                       boutiqueData: boutiqueData,
                     );
                   });
