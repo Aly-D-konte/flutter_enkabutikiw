@@ -9,6 +9,8 @@ import 'package:flutter_frontend/pages/Menu/menuBottom.dart';
 import 'package:flutter_frontend/pages/panier/ajoutPanier.dart';
 import 'package:get/get.dart';
 
+import '../../Models/PanierModel.dart';
+
 class DetailProduit extends StatelessWidget {
   DetailProduit({super.key, required this.modelProduit});
   final ModelProduit modelProduit;
@@ -99,7 +101,7 @@ class DetailProduit extends StatelessWidget {
                                               ))
                                         ],
                                       ),
-                                    ),
+                                    ), 
                                     // la description en elle meme
                                     Padding(
                                       padding: EdgeInsets.all(10),
@@ -322,7 +324,7 @@ class DetailProduit extends StatelessWidget {
                 ),
               ),
             ),
-            const AjoutPanier(),
+             AjoutPanier( modelProduit: modelProduit,),
           ],
         ),
       ),

@@ -23,8 +23,10 @@ class PageFavorite extends StatelessWidget {
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
+                    
                     children: [
-                      Text(favoriteController.nombreProduit.toString()),
+                      Text(favoriteController.nombreProduit.value.toString()),
+                      
                     ],
                   ),
                 ],

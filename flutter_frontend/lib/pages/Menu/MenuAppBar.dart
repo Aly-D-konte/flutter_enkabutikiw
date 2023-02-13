@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_frontend/pages/panier/panier_detail.dart';
+import 'package:get/get.dart';
+
+import '../../Controllers/Produit/produit_quantite.dart';
 
 class HomeAppBar extends StatelessWidget {
-  const HomeAppBar({super.key});
+  HomeAppBar({super.key});
+
+  ProduitQuantiteController produitQuantiteController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +35,11 @@ class HomeAppBar extends StatelessWidget {
               const Padding(padding: EdgeInsets.only(left: 20)),
               //Spacer donne de l'espace entre deux valeurs
               const Spacer(),
-              const  Badge(
+              const Badge(
                 backgroundColor: Colors.red,
-                padding:  EdgeInsets.all(5),
-                label:  Text("30"),
-                child:
-                     Icon(Icons.notification_important_outlined, size: 30),
+                padding: EdgeInsets.all(5),
+                label: Text("30"),
+                child: Icon(Icons.notification_important_outlined, size: 30),
               ),
               const SizedBox(
                 width: 20,
@@ -43,14 +47,15 @@ class HomeAppBar extends StatelessWidget {
               Badge(
                 backgroundColor: Colors.red,
                 padding: const EdgeInsets.all(5),
-                label: const Text("30"),
+                label:
+                    Text(produitQuantiteController.monPanier.value.toString()),
                 child: GestureDetector(
                   child: const Icon(Icons.shopping_cart_outlined, size: 30),
                   onTap: () {
                     showDialog(
                         // barrierDismissible: false,
                         context: context,
-                        builder: (ctx) => const PanierAlert());
+                        builder: (ctx) => PanierAlert());
                   },
                 ),
               ),

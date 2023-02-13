@@ -12,7 +12,7 @@ class ModelProduit {
   final String image;
   final int? quantiteDisponible;
   final String type;
-  //final int? modelCategorie;
+  final ModelCategorie? modelCategorie;
   //final int? user;
   //final int? boutiqueid;
 
@@ -29,7 +29,7 @@ class ModelProduit {
       this.image,
      this.quantiteDisponible,
       this.type,
-     // this.modelCategorie,
+      this.modelCategorie,
      // this.user,
      // this.boutiqueid,
   );
@@ -45,8 +45,8 @@ class ModelProduit {
       json['capacite'],
       json['image'],
       json['quantiteDisponible'],
-      json['type']
-      //json['modelCategorie'],
+      json['type'],
+      json['modelCategorie'],
       //json['user'],
       //json['boutiqueid']
         );

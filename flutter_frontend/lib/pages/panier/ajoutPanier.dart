@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_frontend/Controllers/Produit/produit_quantite.dart';
+import 'package:flutter_frontend/Models/ModelProduit.dart';
+import 'package:get/get.dart';
+
+import '../../Models/PanierModel.dart';
 
 class AjoutPanier extends StatelessWidget {
-  const AjoutPanier({super.key});
+  AjoutPanier({super.key, required this.modelProduit});
+  final ModelProduit modelProduit;
+
+  ProduitQuantiteController produitQuantiteController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +28,9 @@ class AjoutPanier extends StatelessWidget {
                       // shadowColor: Colors.blue
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
-                  onPressed: () {},
+                  onPressed: () {
+                    produitQuantiteController.ajoutPAnier(modelProduit);
+                  },
                   child: Text(
                     "Ajouter au panier".toUpperCase(),
                     style: TextStyle(
