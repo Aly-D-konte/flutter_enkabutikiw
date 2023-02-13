@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_frontend/Controllers/Produit/produit_quantite.dart';
 import 'package:flutter_frontend/Models/Boutique_data.dart';
 import 'package:flutter_frontend/Models/ModelProduit.dart';
+import 'package:flutter_frontend/pages/Menu/menuBottom.dart';
 import 'package:flutter_frontend/pages/Produit/DetailProduit_affichage.dart';
 import 'package:flutter_frontend/pages/Produit/produit_detail_page.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+
+import '../../Models/ModelCategorie.dart';
+import '../../Models/constante.dart';
 
 class ProduitAffichage extends StatefulWidget {
   const ProduitAffichage(
@@ -62,12 +66,17 @@ class _ProduitAffichageState extends State<ProduitAffichage> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => DetailProduit(
-                                    modelProduit: widget.modelProduit)),
-                          );
+                          useindex = true;
+                         // selectedPageIndex = 5;
+                          modelProduit.add(widget.modelProduit);
+                          Navigator.pop(context);
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailProduit(modelProduit: widget.modelProduit)));
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //       builder: (context) => DetailProduit(
+                          //           modelProduit: widget.modelProduit)),
+                          // );
                         },
                         child: Container(
                           margin: const EdgeInsets.all(10),
@@ -75,7 +84,7 @@ class _ProduitAffichageState extends State<ProduitAffichage> {
                             fit: BoxFit.cover,
                             height: 120,
                             width: 120,
-                            imageUrl: widget.modelProduit.image,
+                            imageUrl: widget.modelProduit.image!,
                             placeholder: (context, url) =>
                                 new CircularProgressIndicator(),
                             errorWidget: (context, url, error) =>
@@ -87,7 +96,7 @@ class _ProduitAffichageState extends State<ProduitAffichage> {
                         padding: const EdgeInsets.only(bottom: 8),
                         alignment: Alignment.center,
                         child: Text(
-                          widget.modelProduit.nom,
+                          widget.modelProduit.nom!,
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.normal,

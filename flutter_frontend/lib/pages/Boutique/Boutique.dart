@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_frontend/pages/Boutique/boutique_affichage.dart';
-import 'package:flutter_frontend/pages/Menu/MenuAppBar.dart';
 import 'package:provider/provider.dart';
 
 import '../../Models/Boutique_data.dart';

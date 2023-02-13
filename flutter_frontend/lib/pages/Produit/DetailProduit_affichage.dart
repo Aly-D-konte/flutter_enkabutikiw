@@ -27,6 +27,7 @@ class DetailProduit extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+
             Container(
               color: Colors.amber,
               height: 200,
@@ -55,12 +56,12 @@ class DetailProduit extends StatelessWidget {
                                 height: 200,
                                 child: Expanded(
                                     child: Hero(
-                                  tag: modelProduit.id,
+                                  tag: modelProduit.id!,
                                   child: CachedNetworkImage(
                                     fit: BoxFit.cover,
                                     height: 120,
                                     width: 120,
-                                    imageUrl: modelProduit.image,
+                                    imageUrl: modelProduit.image!,
                                     placeholder: (context, url) =>
                                         const CircularProgressIndicator(),
                                     errorWidget: (context, url, error) =>
@@ -105,7 +106,7 @@ class DetailProduit extends StatelessWidget {
                                     // la description en elle meme
                                     Padding(
                                       padding: EdgeInsets.all(10),
-                                      child: Text(modelProduit.description),
+                                      child: Text(modelProduit.description!),
                                     )
                                   ],
                                 ),
@@ -256,7 +257,7 @@ class DetailProduit extends StatelessWidget {
                                       const SizedBox(
                                         width: 20,
                                       ),
-                                      Text(modelProduit.type)
+                                      Text(modelProduit.type!)
                                     ],
                                   ),
                                 ),
@@ -274,7 +275,7 @@ class DetailProduit extends StatelessWidget {
                                       const SizedBox(
                                         width: 20,
                                       ),
-                                      Text(modelProduit.marque)
+                                      Text(modelProduit.marque!)
                                     ],
                                   ),
                                 ),
@@ -292,7 +293,7 @@ class DetailProduit extends StatelessWidget {
                                       const SizedBox(
                                         width: 20,
                                       ),
-                                      Text(modelProduit.modele)
+                                      Text(modelProduit.modele!)
                                     ],
                                   ),
                                 ),
@@ -310,7 +311,7 @@ class DetailProduit extends StatelessWidget {
                                       const SizedBox(
                                         width: 20,
                                       ),
-                                      Text(modelProduit.capacite)
+                                      Text(modelProduit.capacite!)
                                     ],
                                   ),
                                 ),

@@ -121,7 +121,7 @@ class PanierAlert extends StatelessWidget {
                           fit: BoxFit.cover,
                           height: 120,
                           width: 120,
-                          imageUrl: actualPanier.modelProduit.image,
+                          imageUrl: actualPanier.modelProduit.image!,
                           placeholder: (context, url) =>
                               new CircularProgressIndicator(),
                           errorWidget: (context, url, error) =>

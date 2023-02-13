@@ -2,16 +2,16 @@ import 'package:flutter_frontend/Models/ModelCategorie.dart';
 import 'package:flutter_frontend/Models/boutique.dart';
 
 class ModelProduit {
-  final int id;
-  final String nom;
-  final String description;
-  final String marque;
+  final int? id;
+  final String? nom;
+  final String? description;
+  final String? marque;
   final int? prix;
-  final String modele;
-  final String capacite;
-  final String image;
+  final String? modele;
+  final String? capacite;
+  final String? image;
   final int? quantiteDisponible;
-  final String type;
+  final String? type;
   final ModelCategorie? modelCategorie;
   //final int? user;
   //final int? boutiqueid;

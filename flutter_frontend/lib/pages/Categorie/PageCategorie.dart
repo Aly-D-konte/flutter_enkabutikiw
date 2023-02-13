@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_frontend/Models/ModelCategorie.dart';
 import 'package:flutter_frontend/pages/Categorie/AffichageCategories.dart';
-import 'package:flutter_frontend/pages/Menu/MenuAppBar.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 
@@ -51,7 +50,6 @@ class _PageCategorieState extends State<PageCategorie> {
             body: Column(
             children: [
               Container(
-                child: HomeAppBar(),
                 color: Colors.amber,
                 height: 100,
               ),
