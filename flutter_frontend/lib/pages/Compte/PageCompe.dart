@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_frontend/pages/Compte/ProfileBody.dart';
 
 class PageCompte extends StatelessWidget {
   const PageCompte({Key? key}) : super(key: key);
@@ -6,11 +7,8 @@ class PageCompte extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      body: Center(
-        child: Container(
-          child: Text("La page est en chantier"),
-        ),
-      ),
+      
+      body: ProfileBody()
     );
   }
 }

@@ -12,59 +12,67 @@ import '../../Models/constante.dart';
 import '../panier/panier_detail.dart';
 
 class Homepage extends StatefulWidget {
-   Homepage({Key? key}) : super(key: key);
-
+  Homepage({Key? key}) : super(key: key);
 
   @override
   State<Homepage> createState() => _HomepageState();
 }
 
 class _HomepageState extends State<Homepage> {
-
-  int curveindex = 0 ;
+  int curveindex = 0;
   //int _selectedIndex = 0;
 //ModelProduit modelProduitsss = new ModelProduit(1,'Samsung', "SAMSUNG A70","SAMSUNG",10000,"modele1","image","Capacite 1",3,"Industriel",ModelCategorie(1,"Telephone", "image"));
 
   final List<Widget> _pages = [
     ProduitPage(),
-     PageCategorie(),
+    PageCategorie(),
     PageBoutiques(),
-     PageFavorite(),
-     PageCompte(),
-  //  DetailProduit(modelProduit: modelProduit[0]),
+    PageFavorite(),
+    PageCompte(),
+    //  DetailProduit(modelProduit: modelProduit[0]),
   ];
-
 
   @override
   Widget build(BuildContext context) {
-    ProduitQuantiteController produitQuantiteController = Get.put(ProduitQuantiteController());
+    ProduitQuantiteController produitQuantiteController =
+        Get.put(ProduitQuantiteController());
 
     return Scaffold(
-    appBar: AppBar(actions: [const Badge(
-      backgroundColor: Colors.red,
-      padding: EdgeInsets.all(5),
-      label: Text("30"),
-      child: Icon(Icons.notification_important_outlined, size: 30),
-    ),
-      const SizedBox(
-        width: 20,
+      appBar: AppBar(
+        actions: [
+          Row(
+            children: [
+              const Badge(
+                backgroundColor: Colors.red,
+                padding: EdgeInsets.all(2),
+                label: Center(child: Text("30")),
+                child: Icon(Icons.notification_important_outlined, size: 30),
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              Badge(
+                alignment: AlignmentDirectional.topEnd,
+     
+     
+                backgroundColor: Colors.red,
+                // textStyle: TextStyle(height: 30),
+                padding: const EdgeInsets.all(2),
+                label:
+                    Text(produitQuantiteController.monPanier.length.toString()),
+                child: GestureDetector(
+                  child: const Icon(Icons.shopping_cart, size: 30),
+                  onTap: () {
+                    // Navigator.push(context,
+                    //     MaterialPageRoute(builder: (_) => PanierAlert(modelPanier:  ,)));
+                  },
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
-      Badge(
-        backgroundColor: Colors.red,
-        padding: const EdgeInsets.all(5),
-        label:
-        Text(produitQuantiteController.monPanier.length.toString()),
-        child: GestureDetector(
-          child: const Icon(Icons.shopping_cart, size: 30),
-          onTap: () {
-            showDialog(
-              // barrierDismissible: false,
-                context: context,
-                builder: (ctx) => PanierAlert());
-          },
-        ),
-      ),],),
-      body: useindex ? _pages[selectedPageIndex] : _pages[curveindex],
+      body: useindex ? _pages[selectedPageIndex] : _pages![curveindex],
       bottomNavigationBar: CurvedNavigationBar(
         items: const <Widget>[
           Icon(Icons.home, size: 30, color: Colors.white),

@@ -33,7 +33,7 @@ class AjoutPanier extends StatelessWidget {
                   },
                   child: Text(
                     "Ajouter au panier".toUpperCase(),
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.white, fontWeight: FontWeight.normal),
                   ))
             ],
