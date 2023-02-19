@@ -21,7 +21,7 @@ class _PageCategorieState extends State<PageCategorie> {
   getCategorie() async {
     modelCategories = await CategorieServices.getCategorie();
     Provider.of<BoutiqueData>(context, listen: false).modelCategories =
-        modelCategories!;
+        modelCategories;
 
     setState(() {});
   }

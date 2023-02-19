@@ -56,25 +56,7 @@ class ProfilePic extends StatelessWidget {
               ],
             ),
           )
-          // Positioned(
-          //   bottom: 0,
-          //   right: -4,
-          //   height: 100,
-          //   child: Padding(
-          //     padding: const EdgeInsets.all(8.0),
-          //     child: TextField(
-          //         // Tell your textfield which controller it owns
-          //         // controller: nameController,
-          //         // Every single time the text changes in a
-          //         // TextField, this onChanged callback is called
-          //         // and it passes in the value.
-          //         //
-          //         // Set the text of your controller to
-          //         // to the next value.
-          //         // onChanged: (v) => nameController.text = v,
-          //         decoration: InputDecoration(hintText: 'Aly KONTE')),
-          //   ),
-          // ),
+         
         ],
       ),
     );

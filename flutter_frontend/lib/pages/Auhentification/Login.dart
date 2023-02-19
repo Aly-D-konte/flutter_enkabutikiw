@@ -114,7 +114,7 @@ class LoginWidget extends StatelessWidget {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>  Homepage()),
+                                        builder: (context) => Homepage()),
                                   );
                                 },
                                 child: const Text(

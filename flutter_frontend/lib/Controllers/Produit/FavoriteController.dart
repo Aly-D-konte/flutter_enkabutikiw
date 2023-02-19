@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 class FavoriteController extends GetxController {
   var nombreProduit = 0.obs;
-  var favoriListe = <ModelProduit>[].obs;
+  var favoriListe = <ModelProduit>[];
 
   void ajoutFavorieToListe(ModelProduit modelProduit) {
     if (!favoriListe.contains(modelProduit)) {

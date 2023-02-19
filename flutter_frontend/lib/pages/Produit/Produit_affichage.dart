@@ -40,7 +40,7 @@ class _ProduitAffichageState extends State<ProduitAffichage> {
           Expanded(
             child: Container(
               width: MediaQuery.of(context).size.width * .5,
-              child: Card(
+             child: Card(
                 shadowColor: Colors.black,
                 elevation: 5,
                 child: Container(

@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_frontend/pages/Compte/profile_menu.dart';
 import 'package:flutter_frontend/pages/Compte/profile_photo.dart';
 
+import '../../Models/ModelCommande.dart';
+import '../Auhentification/Login.dart';
+import '../Commandes/AffichageCommande.dart';
+import '../Commandes/PageCommande.dart';
+import 'Password/changePassword.dart';
+
 class ProfileBody extends StatelessWidget {
-  const ProfileBody({super.key});
+  ProfileBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +31,12 @@ class ProfileBody extends StatelessWidget {
         ProfileMenu(
           icon: "assets/images/commande.png",
           text: "Commande",
-          press: () {},
+          press: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (_) => PageCommande()));
+          },
         ),
-          ProfileMenu( 
+        ProfileMenu(
           icon: "assets/images/commande.png",
           text: "Moribabougou Droit",
           press: () {},
@@ -35,12 +44,18 @@ class ProfileBody extends StatelessWidget {
         ProfileMenu(
           icon: "assets/images/password.png",
           text: "Changer le mot de passe",
-          press: () {},
+          press: () {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const ChangePassword()));
+          },
         ),
         ProfileMenu(
           icon: "assets/images/logout.png",
           text: "Déconnexion",
-          press: () {},
+          press: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (_) => const LoginWidget()));
+          },
         ),
 
         // Padding(

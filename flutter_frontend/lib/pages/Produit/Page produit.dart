@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_frontend/Models/Boutique_data.dart';
+import 'package:flutter_frontend/Models/ModelCategorie.dart';
 import 'package:flutter_frontend/Models/ModelProduit.dart';
 import 'package:flutter_frontend/Services/Produit_service.dart';
 import 'package:provider/provider.dart';
 
+import '../Slide/SliderPage.dart';
 import 'Produit_affichage.dart';
 
 class ProduitPage extends StatefulWidget {
-  const ProduitPage({Key? key}) : super(key: key);
+  ProduitPage({Key? key}) : super(key: key);
 
   @override
   State<ProduitPage> createState() => _ProduitPageState();
@@ -19,7 +21,7 @@ class _ProduitPageState extends State<ProduitPage> {
   get() async {
     modelProduits = await ProduitServices.getProduit();
     Provider.of<BoutiqueData>(context, listen: false).modelProduits =
-        modelProduits!;
+        modelProduits;
 
     setState(() {});
   }
@@ -42,9 +44,9 @@ class _ProduitPageState extends State<ProduitPage> {
             body: Column(
             children: [
               Container(
-                color: Colors.amber,
-                height: 100,
-              ),
+                  // color: Colors.amber,
+                  height: 300,
+                  child: SlideWidget()),
               Flexible(
                 child: Consumer<BoutiqueData>(
                     builder: (context, boutiqueData, child) {

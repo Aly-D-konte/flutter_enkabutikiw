@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_frontend/Models/Boutique_data.dart';
 import 'package:flutter_frontend/Models/boutique.dart';
@@ -20,7 +19,7 @@ class _PageBoutiquesState extends State<PageBoutiques> {
 
   getBoutique() async{
     modelboutiques = await DatabaseServices.getBoutiques();
-    Provider.of<BoutiqueData>(context, listen: false).modelboutiques = modelboutiques!;
+    Provider.of<BoutiqueData>(context, listen: false).modelboutiques = modelboutiques;
 
     setState(() {
 

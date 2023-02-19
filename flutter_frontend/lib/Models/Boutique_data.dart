@@ -1,19 +1,16 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_frontend/Models/ModelCategorie.dart';
+import 'package:flutter_frontend/Models/ModelCommande.dart';
 import 'package:flutter_frontend/Models/boutique.dart';
 
 import '../Services/Boutique_services.dart';
 import 'ModelProduit.dart';
 
-
-
 class BoutiqueData extends ChangeNotifier {
   List<ModelBoutiques> modelboutiques = [];
-
   List<ModelProduit> modelProduits = [];
-  List<ModelCategorie> modelCategories =[];
-  
+  List<ModelCategorie> modelCategories = [];
+  List<ModelCommande> modelCommandes = [];
 
 //La partie ajout
   void ajoutBoutique(String nom, String description, String adresse,
@@ -23,18 +20,17 @@ class BoutiqueData extends ChangeNotifier {
     modelboutiques.add(boutique);
     notifyListeners();
   }
+
 //La partie modification
   void modifierBoutique(ModelBoutiques modelboutiques) {
-   // boutiques.toggle();
+    // boutiques.toggle();
     notifyListeners();
   }
 
 //La partie suppression
 
   void supprimerBoutique(ModelBoutiques boutique) async {
-
     modelboutiques.remove(boutique);
     notifyListeners();
   }
-
 }

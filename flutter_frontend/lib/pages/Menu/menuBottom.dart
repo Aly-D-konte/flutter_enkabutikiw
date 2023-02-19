@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_frontend/Models/Boutique_data.dart';
+import 'package:flutter_frontend/Models/ModelCategorie.dart';
 import 'package:flutter_frontend/pages/Boutique/Boutique_page.dart';
 import 'package:flutter_frontend/pages/Compte/PageCompe.dart';
 import 'package:flutter_frontend/pages/Categorie/PageCategorie.dart';
@@ -20,8 +22,6 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   int curveindex = 0;
-  //int _selectedIndex = 0;
-//ModelProduit modelProduitsss = new ModelProduit(1,'Samsung', "SAMSUNG A70","SAMSUNG",10000,"modele1","image","Capacite 1",3,"Industriel",ModelCategorie(1,"Telephone", "image"));
 
   final List<Widget> _pages = [
     ProduitPage(),
@@ -52,19 +52,19 @@ class _HomepageState extends State<Homepage> {
                 width: 20,
               ),
               Badge(
-                alignment: AlignmentDirectional.topEnd,
-     
-     
+                //alignment: AlignmentDirectional.topEnd,
+
                 backgroundColor: Colors.red,
                 // textStyle: TextStyle(height: 30),
-                padding: const EdgeInsets.all(2),
-                label:
-                    Text(produitQuantiteController.monPanier.length.toString()),
+                padding: const EdgeInsets.all(3),
+                label: Center(
+                    child: Text(
+                        produitQuantiteController.monPanier.length.toString())),
                 child: GestureDetector(
                   child: const Icon(Icons.shopping_cart, size: 30),
                   onTap: () {
-                    // Navigator.push(context,
-                    //     MaterialPageRoute(builder: (_) => PanierAlert(modelPanier:  ,)));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => PanierAlert()));
                   },
                 ),
               ),
@@ -72,7 +72,7 @@ class _HomepageState extends State<Homepage> {
           ),
         ],
       ),
-      body: useindex ? _pages[selectedPageIndex] : _pages![curveindex],
+      body: useindex ? _pages[selectedPageIndex] : _pages[curveindex],
       bottomNavigationBar: CurvedNavigationBar(
         items: const <Widget>[
           Icon(Icons.home, size: 30, color: Colors.white),

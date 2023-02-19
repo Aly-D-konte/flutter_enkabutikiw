@@ -1,126 +1,92 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_frontend/Controllers/Produit/produit_quantite.dart';
-import 'package:get/get.dart';
+import 'package:flutter_frontend/pages/Commandes/AffichageCommande.dart';
 
-class PageCommande extends StatelessWidget {
+import 'package:provider/provider.dart';
+
+import '../../Models/Boutique_data.dart';
+import '../../Models/ModelCommande.dart';
+import '../../Services/Commande_services.dart';
+
+class PageCommande extends StatefulWidget {
   PageCommande({super.key});
 
-  // ProduitQuantiteController produitQuantiteController = Get.find();
+  @override
+  State<PageCommande> createState() => _PageCommandeState();
+}
+
+class _PageCommandeState extends State<PageCommande> {
+  // List<ModelCommande> modelCommandess = [];
+  List<ModelCommande>? modelCommandess;
+
+  CommandeServices commandes = CommandeServices();
+
+  // getCommande() async {
+  //   modelCommandess = await CommandeServices.getCommande();
+  //   Provider.of<BoutiqueData>(context, listen: false).modelCommandes =
+  //       modelCommandess;
+
+  //   setState(() {});
+  // }
+
+  getCommande() async {
+    modelCommandess = await CommandeServices.getCommande();
+    Provider.of<BoutiqueData>(context, listen: false).modelCommandes =
+        modelCommandess!;
+
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getCommande();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              color: Colors.amber,
-              height: 100,
+    return modelCommandess == null
+        ? const Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
             ),
-            for (int i = 1; i < 6; i++)
-              Container(
-                height: 140,
-                margin: const EdgeInsets.symmetric(horizontal: 3, vertical: 15),
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            " Telephone ",
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.normal,
-                                color: Colors.black),
-                          ),
-                          const Text(
-                            "Prix : 45 00O FCFA",
-                            style: TextStyle(
-                                fontWeight: FontWeight.normal,
-                                color: Colors.orangeAccent,
-                                fontSize: 15),
-                          ),
-                          const Text(
-                            "Boutique : KONTE SHOP",
-                            style: TextStyle(
-                                fontWeight: FontWeight.normal,
-                                color: Colors.orangeAccent,
-                                fontSize: 15),
-                          ),
-                          //la partie ou on va ajouté ou enlever une quantite
-                          Row(
-                            children: [
-                              Container(
-                                height: 20,
-                                width: 90,
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                    color: Colors.orange,
-                                    borderRadius: BorderRadius.circular(5)),
-                                child: const Text(
-                                  "ENCOURS",
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.normal,
-                                      color: Colors.white),
-                                  textAlign: TextAlign.center,
-                                ),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                    const Spacer(),
-                    Container(
-                      height: 70,
-                      width: 40,
-                      margin: const EdgeInsets.only(right: 15),
-                      child: CachedNetworkImage(
-                        fit: BoxFit.cover,
-                        height: 120,
-                        width: 120,
-                        imageUrl: "image",
-                        placeholder: (context, url) =>
-                            new CircularProgressIndicator(),
-                        errorWidget: (context, url, error) =>
-                            new Icon(Icons.electric_rickshaw_sharp),
-                      ),
-                    ),
-                    Container(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 3),
+          )
+        : Scaffold(
+            appBar: AppBar(
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back, color: Colors.black),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+            ),
+            body: Column(
+              children: [
+                Container(
+                  color: Colors.amber,
+                  height: 100,
+                ),
+                Flexible(
+                  child: Consumer<BoutiqueData>(
+                      builder: (context, BoutiqueData, child) {
+                    return SingleChildScrollView(
+                      child: Container(
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
-                            Icon(Icons.delete, color: Colors.red),
+                          //alignment: WrapAlignment.spaceAround,
+                          children: [
+                            // Text("${BoutiqueData.modelCommandes[1].id}")
+                            for (int i = 0;
+                                i < BoutiqueData.modelCommandes.length;
+                                i++)
+                              AffichageCommande(
+                                modelCommande: BoutiqueData.modelCommandes[i],
+                                boutiqueData: BoutiqueData,
+                              )
                           ],
                         ),
                       ),
-                    ),
-                  ],
+                    );
+                  }),
                 ),
-              ),
-          ],
-        ),
-      ),
-    );
+              ],
+            ),
+          );
   }
 }

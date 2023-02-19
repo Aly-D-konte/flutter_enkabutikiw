@@ -6,9 +6,9 @@ class PageCompte extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return  SingleChildScrollView(
       
-      body: ProfileBody()
+      child: ProfileBody()
     );
   }
 }

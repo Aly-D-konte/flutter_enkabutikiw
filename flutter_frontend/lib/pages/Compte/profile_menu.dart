@@ -36,7 +36,8 @@ class ProfileMenu extends StatelessWidget {
               ),
               Icon(Icons.arrow_forward_ios_outlined)
             ],
-          )),
+          )
+          ),
     );
   }
 }

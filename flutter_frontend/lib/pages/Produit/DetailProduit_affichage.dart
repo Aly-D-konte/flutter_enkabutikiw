@@ -26,18 +26,17 @@ class DetailProduit extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-    icon: Icon(Icons.arrow_back, color: Colors.black),
-    onPressed: () => Navigator.of(context).pop(),
-  ),
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-
-            Container(
-              color: Colors.amber,
-              height: 200,
-            ),
+            // Container(
+            //   color: Colors.amber,
+            //   height: 200,
+            // ),
             Container(
               child: Card(
                 shadowColor: Colors.black,
@@ -62,7 +61,7 @@ class DetailProduit extends StatelessWidget {
                                 height: 200,
                                 child: Expanded(
                                     child: Hero(
-                                  tag: modelProduit.id!,
+                                  tag: modelProduit.id,
                                   child: CachedNetworkImage(
                                     fit: BoxFit.cover,
                                     height: 120,
@@ -108,7 +107,7 @@ class DetailProduit extends StatelessWidget {
                                               ))
                                         ],
                                       ),
-                                    ), 
+                                    ),
                                     // la description en elle meme
                                     Padding(
                                       padding: EdgeInsets.all(10),
@@ -202,7 +201,7 @@ class DetailProduit extends StatelessWidget {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       const Text(
-                                        "Prix",
+                                        "Prix unitaire",
                                         style: TextStyle(
                                             color: Colors.black, fontSize: 24),
                                       ),
@@ -236,7 +235,7 @@ class DetailProduit extends StatelessWidget {
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
-                                    children: const [
+                                    children: [
                                       Text(
                                         "Categorie",
                                         style: TextStyle(
@@ -245,7 +244,7 @@ class DetailProduit extends StatelessWidget {
                                       SizedBox(
                                         width: 20,
                                       ),
-                                      Text("Refrigerateur")
+                                      Text("zerfty")
                                     ],
                                   ),
                                 ),
@@ -331,7 +330,9 @@ class DetailProduit extends StatelessWidget {
                 ),
               ),
             ),
-             AjoutPanier( modelProduit: modelProduit,),
+            AjoutPanier(
+              modelProduit: modelProduit,
+            ),
           ],
         ),
       ),

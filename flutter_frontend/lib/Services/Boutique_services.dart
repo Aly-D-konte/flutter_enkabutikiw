@@ -46,7 +46,6 @@ class DatabaseServices {
       modelboutiques.add(boutique);
     }
     return modelboutiques;
-    print("ca marche");
   }
 
 

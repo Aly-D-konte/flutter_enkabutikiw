@@ -2,7 +2,7 @@ import 'package:flutter_frontend/Models/ModelCategorie.dart';
 import 'package:flutter_frontend/Models/boutique.dart';
 
 class ModelProduit {
-  final int? id;
+  final int id;
   final String? nom;
   final String? description;
   final String? marque;
@@ -16,22 +16,20 @@ class ModelProduit {
   //final int? user;
   //final int? boutiqueid;
 
-
-
   ModelProduit(
-      this.id,
-      this.nom,
-      this.description,
-      this.marque,
-      this.prix,
-      this.modele,
-      this.capacite,
-      this.image,
-     this.quantiteDisponible,
-      this.type,
-      this.modelCategorie,
-     // this.user,
-     // this.boutiqueid,
+    this.id,
+    this.nom,
+    this.description,
+    this.marque,
+    this.prix,
+    this.modele,
+    this.capacite,
+    this.image,
+    this.quantiteDisponible,
+    this.type,
+    this.modelCategorie,
+    // this.user,
+    // this.boutiqueid,
   );
 
   factory ModelProduit.fromMap(Map json) {
@@ -49,13 +47,11 @@ class ModelProduit {
       json['modelCategorie'],
       //json['user'],
       //json['boutiqueid']
-        );
-    }
-
-
+    );
   }
+}
 
- /* Map<String, dynamic> toJson() {
+/* Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['nom'] = this.nom;
@@ -79,8 +75,6 @@ class ModelProduit {
     return data;
   }*/
 
-
-
 class User {
   int? id;
   String? username;
@@ -96,16 +90,16 @@ class User {
 
   User(
       {this.id,
-        this.username,
-        this.prenom,
-        this.nom,
-        this.telephone,
-        this.adresse,
-        this.genre,
-        this.image,
-        this.email,
-        this.password,
-        this.roles});
+      this.username,
+      this.prenom,
+      this.nom,
+      this.telephone,
+      this.adresse,
+      this.genre,
+      this.image,
+      this.email,
+      this.password,
+      this.roles});
 
   User.fromJson(Map<String, dynamic> json) {
     id = json['id'];
