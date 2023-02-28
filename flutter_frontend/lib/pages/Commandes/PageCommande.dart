@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../../Models/Boutique_data.dart';
 import '../../Models/ModelCommande.dart';
 import '../../Services/Commande_services.dart';
+import '../../Services/globals.dart';
 
 class PageCommande extends StatefulWidget {
   PageCommande({super.key});
@@ -16,7 +17,7 @@ class PageCommande extends StatefulWidget {
 
 class _PageCommandeState extends State<PageCommande> {
   // List<ModelCommande> modelCommandess = [];
-  List<ModelCommande>? modelCommandess;
+  List<ModelCommande> modelCommandess = [];
 
   CommandeServices commandes = CommandeServices();
 
@@ -29,10 +30,9 @@ class _PageCommandeState extends State<PageCommande> {
   // }
 
   getCommande() async {
-    modelCommandess = await CommandeServices.getCommande();
+    modelCommandess = await CommandeServices.getCommande(usId);
     Provider.of<BoutiqueData>(context, listen: false).modelCommandes =
-        modelCommandess!;
-
+        modelCommandess;
     setState(() {});
   }
 
@@ -78,6 +78,14 @@ class _PageCommandeState extends State<PageCommande> {
                               AffichageCommande(
                                 modelCommande: BoutiqueData.modelCommandes[i],
                                 boutiqueData: BoutiqueData,
+                                onDelete: (String id) {
+                                  setState(() {
+                                    modelCommandess = modelCommandess
+                                        .where(
+                                            (commandes) => commandes.id != id)
+                                        .toList();
+                                  });
+                                },
                               )
                           ],
                         ),

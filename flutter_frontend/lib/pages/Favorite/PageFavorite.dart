@@ -52,7 +52,7 @@ class PageFavorite extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "favoriteController",
+                            "${favoriteController.favoriListe}",
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.normal,

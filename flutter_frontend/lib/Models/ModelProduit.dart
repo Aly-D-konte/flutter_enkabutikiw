@@ -13,6 +13,7 @@ class ModelProduit {
   final int? quantiteDisponible;
   final String? type;
   final ModelCategorie? modelCategorie;
+  final ModelBoutiques? modelBoutiques;
   //final int? user;
   //final int? boutiqueid;
 
@@ -28,6 +29,7 @@ class ModelProduit {
     this.quantiteDisponible,
     this.type,
     this.modelCategorie,
+    this.modelBoutiques,
     // this.user,
     // this.boutiqueid,
   );
@@ -45,6 +47,8 @@ class ModelProduit {
       json['quantiteDisponible'],
       json['type'],
       json['modelCategorie'],
+      json['modelBoutiques'],
+
       //json['user'],
       //json['boutiqueid']
     );

@@ -1,43 +1,39 @@
-import 'package:flutter_frontend/Models/PanierModel.dart';
-
-class ModelCommande {
+class Paniers {
   int? id;
-  String? code;
-  String? date;
-  String? statut;
+  int? quantite;
   User? user;
-  ModelPanier? modelPanier;
+  List<Produits>? produits;
+  int? totalproduit;
 
-  ModelCommande(this.id, this.code, this.date, this.statut, this.modelPanier);
-  bool get isEmpty => modelPanier?.isEmpty; /* implement the logic to check whether this instance is empty */
-  // factory ModelCommande.fromMap(Map json) {
-  //   return ModelCommande(json['id'], json['code'], json['date'], json['statut'],
-  //       json['modelPanier']);
-  // }
-  ModelCommande.fromJson(Map<String, dynamic> json) {
+  Paniers(
+      {this.id, this.quantite, this.user, this.produits, this.totalproduit});
+
+  Paniers.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    code = json['code'];
-    date = json['date'];
-    statut = json['statut'];
+    quantite = json['quantite'];
     user = json['user'] != null ? new User.fromJson(json['user']) : null;
-    // panier =
-    //json['panier'] != null ? new Panier.fromJson(json['panier']) : null;
+    if (json['produits'] != null) {
+      produits = <Produits>[];
+      json['produits'].forEach((v) {
+        produits!.add(new Produits.fromJson(v));
+      });
+    }
+    totalproduit = json['totalproduit'];
   }
 
-//   Map<String, dynamic> toJson() {
-//     final Map<String, dynamic> data = new Map<String, dynamic>();
-//     data['id'] = this.id;
-//     data['code'] = this.code;
-//     data['date'] = this.date;
-//     data['statut'] = this.statut;
-//     if (this.user != null) {
-//       data['user'] = this.user!.toJson();
-//     }
-//     if (this.panier != null) {
-//       data['panier'] = this.panier!.toJson();
-//     }
-//     return data;
-//   }
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['quantite'] = this.quantite;
+    if (this.user != null) {
+      data['user'] = this.user!.toJson();
+    }
+    if (this.produits != null) {
+      data['produits'] = this.produits!.map((v) => v.toJson()).toList();
+    }
+    data['totalproduit'] = this.totalproduit;
+    return data;
+  }
 }
 
 class User {
@@ -119,38 +115,6 @@ class Roles {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['name'] = this.name;
-    return data;
-  }
-}
-
-class Panier {
-  int? id;
-  int? quantite;
-  List<Produits>? produits;
-  int? totalproduit;
-
-  Panier({this.id, this.quantite, this.produits, this.totalproduit});
-
-  Panier.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    quantite = json['quantite'];
-    if (json['produits'] != null) {
-      produits = <Produits>[];
-      json['produits'].forEach((v) {
-        produits!.add(new Produits.fromJson(v));
-      });
-    }
-    totalproduit = json['totalproduit'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['quantite'] = this.quantite;
-    if (this.produits != null) {
-      data['produits'] = this.produits!.map((v) => v.toJson()).toList();
-    }
-    data['totalproduit'] = this.totalproduit;
     return data;
   }
 }

@@ -4,10 +4,15 @@
 
 //class ApiServices {
 const String baseUrl = "http://10.0.2.2:8080/api";
-const  Map<String, String> headers = {
+const Map<String, String> headers = {
   "content-type": "application/json",
   // "accept": "application/json",
 };
+
+var usId;
+String? nomuser;
+String? prenomuser;
+String? emailuser;
 /*la partie get
   Future<http.Response> get(String url, Map<String, String> params) async {
     try {

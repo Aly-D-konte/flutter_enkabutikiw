@@ -5,12 +5,16 @@ import 'package:flutter_frontend/Models/boutique.dart';
 
 import '../Services/Boutique_services.dart';
 import 'ModelProduit.dart';
+import 'Paniers.dart';
 
 class BoutiqueData extends ChangeNotifier {
   List<ModelBoutiques> modelboutiques = [];
   List<ModelProduit> modelProduits = [];
   List<ModelCategorie> modelCategories = [];
   List<ModelCommande> modelCommandes = [];
+
+  List<Paniers> paniers = [];
+  List<Paniers> items = [];
 
 //La partie ajout
   void ajoutBoutique(String nom, String description, String adresse,

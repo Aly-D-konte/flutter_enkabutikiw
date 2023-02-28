@@ -17,6 +17,8 @@ class ModelPanier {
     );
   }
 
+  get isEmpty => null;
+
   // ModelPanier.fromMap(Map json) {
   //   id = json['id'];
   //   quantite = json['quantite'];

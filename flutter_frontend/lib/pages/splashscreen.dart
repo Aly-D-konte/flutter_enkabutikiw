@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_frontend/pages/Menu/menuBottom.dart';
 
 import 'Auhentification/Login.dart';
+
 class pages extends StatelessWidget {
   const pages({Key? key}) : super(key: key);
 
@@ -13,7 +15,7 @@ class pages extends StatelessWidget {
           child: const Text("Commencer"),
           onPressed: () {
             Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => const LoginWidget()));
+                .push(MaterialPageRoute(builder: (_) => LoginWidget()));
           },
         ),
       ),

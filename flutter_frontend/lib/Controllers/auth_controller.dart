@@ -6,24 +6,31 @@ import 'package:flutter/material.dart';
 
 import '../Services/globals.dart';
 
-class AuthController{
-
-  Future<http.Response> LoginUser(String usernameOrEmail, String password) async{
-    Map data = {
-      'usernameOrEmail': usernameOrEmail,
-      'password' : password
-    };
-   // const _url = Uri.parse(_baseUrl + '/auth/signin');
+class AuthController {
+  static Future<bool> LoginUser(String usernameOrEmail, String password) async {
+    Map data = {'usernameOrEmail': usernameOrEmail, 'password': password};
+    // const _url = Uri.parse(_baseUrl + '/auth/signin');
     var body = jsonEncode(data);
-    var  url = Uri.parse(baseUrl + '/auth/signin') ;
+    var url = Uri.parse(baseUrl + '/auth/signin');
     var response = await http.post(url, body: body, headers: headers);
-    if(response.statusCode == 200){
+    print(response.statusCode);
+    if (response.statusCode == 200) {
       var loginArr = json.decode(response.body);
-
-      print(loginArr);
-    } else{
+      var name = json.decode(response.body);
+      var firstname = json.decode(response.body);
+      var mail = json.decode(response.body);
+      nomuser = name['nom'];
+      print(nomuser);
+      prenomuser = firstname['prenom'];
+      print(prenomuser);
+      emailuser = mail['email'];
+      print(emailuser);
+      usId = loginArr['id'];
+      print(loginArr['id']);
+      return true;
+    } else {
       print(response.body);
+      throw ('erreur de connexion');
     }
-    return response;
   }
 }

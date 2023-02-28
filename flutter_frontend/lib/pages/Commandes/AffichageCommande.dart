@@ -2,15 +2,22 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_frontend/Models/constante.dart';
+import 'package:quickalert/quickalert.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 
 import '../../Models/Boutique_data.dart';
 import '../../Models/ModelCommande.dart';
 
 class AffichageCommande extends StatefulWidget {
   AffichageCommande(
-      {super.key, required this.modelCommande, required this.boutiqueData});
+      {super.key,
+      required this.modelCommande,
+      required this.boutiqueData,
+      required this.onDelete});
   final ModelCommande modelCommande;
   final BoutiqueData boutiqueData;
+  final void Function(String id) onDelete;
 
   @override
   State<AffichageCommande> createState() => _AffichageCommandeState();
@@ -19,6 +26,16 @@ class AffichageCommande extends StatefulWidget {
 class _AffichageCommandeState extends State<AffichageCommande> {
   @override
   Widget build(BuildContext context) {
+     // Vérifier si la liste des commandes est vide
+    if (widget.modelCommande.isEmpty) {
+      return Container(
+        padding: const EdgeInsets.all(16),
+        child: Text(
+          'Aucune commande disponible.',
+          style: Theme.of(context).textTheme.headline6,
+        ),
+      );
+    }
     return SingleChildScrollView(
       child: Container(
           height: 140,
@@ -103,15 +120,27 @@ class _AffichageCommandeState extends State<AffichageCommande> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Icon(Icons.delete, color: Colors.red),
+                    children: [
+                      IconButton(
+                        icon: Icon(
+                          Icons.delete,
+                          color: Colors.red,
+                        ),
+                        onPressed: () => {
+                          QuickAlert.show(
+                            context: context,
+                            type: QuickAlertType.success,
+                            text: 'Commande supprimer avec succès!',
+                          ),
+                          widget.onDelete(widget.modelCommande.id as String)
+                        },
+                      ),
                     ],
                   ),
                 ),
               ),
             ],
-          )
-          ),
+          )),
     );
   }
 }

@@ -17,17 +17,17 @@ class ProfileBody extends StatelessWidget {
       children: [
         const Text(
           "Profile",
-          style: TextStyle(fontSize: 30, height: 1.5),
+          style: TextStyle(fontSize: 23, height: 1.5),
         ),
         const ProfilePic(),
         const SizedBox(
           height: 20,
         ),
-        ProfileMenu(
-          icon: "assets/images/favorite.png",
-          text: "Favorite",
-          press: () {},
-        ),
+        // ProfileMenu(
+        //   icon: "assets/images/favorite.png",
+        //   text: "Favorite",
+        //   press: () {},
+        // ),
         ProfileMenu(
           icon: "assets/images/commande.png",
           text: "Commande",
@@ -37,7 +37,7 @@ class ProfileBody extends StatelessWidget {
           },
         ),
         ProfileMenu(
-          icon: "assets/images/commande.png",
+          icon: "assets/images/localisation.png",
           text: "Moribabougou Droit",
           press: () {},
         ),

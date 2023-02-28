@@ -8,6 +8,7 @@ import 'package:flutter_frontend/Models/ModelProduit.dart';
 import 'package:flutter_frontend/pages/Menu/menuBottom.dart';
 import 'package:flutter_frontend/pages/panier/ajoutPanier.dart';
 import 'package:get/get.dart';
+import 'package:quickalert/quickalert.dart';
 
 import '../../Models/PanierModel.dart';
 
@@ -176,6 +177,11 @@ class DetailProduit extends StatelessWidget {
                                           bottomRight: Radius.circular(10)))),
                               onPressed: () {
                                 produitQuantiteController.addQuantite();
+                                QuickAlert.show(
+                                  context: context,
+                                  type: QuickAlertType.success,
+                                  text: 'Transaction Completed Successfully!',
+                                );
                               },
                               child: const Icon(
                                 CupertinoIcons.plus,
@@ -217,7 +223,7 @@ class DetailProduit extends StatelessWidget {
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
-                                    children: const [
+                                    children: [
                                       Text(
                                         "Bouique",
                                         style: TextStyle(
@@ -226,7 +232,8 @@ class DetailProduit extends StatelessWidget {
                                       SizedBox(
                                         width: 20,
                                       ),
-                                      Text("KONTE SHOP")
+                                      Text(
+                                          " ${modelProduit.modelBoutiques!.nom}"),
                                     ],
                                   ),
                                 ),
@@ -244,7 +251,8 @@ class DetailProduit extends StatelessWidget {
                                       SizedBox(
                                         width: 20,
                                       ),
-                                      Text("zerfty")
+                                      Text(
+                                          " ${modelProduit.modelCategorie!.nom}")
                                     ],
                                   ),
                                 ),

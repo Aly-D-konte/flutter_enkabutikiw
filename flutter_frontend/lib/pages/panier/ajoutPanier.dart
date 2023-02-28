@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_frontend/Controllers/Produit/produit_quantite.dart';
 import 'package:flutter_frontend/Models/ModelProduit.dart';
 import 'package:get/get.dart';
+import 'package:quickalert/quickalert.dart';
 
 import '../../Models/PanierModel.dart';
 
@@ -30,6 +31,11 @@ class AjoutPanier extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10))),
                   onPressed: () {
                     produitQuantiteController.ajoutPAnier(modelProduit);
+                    QuickAlert.show(
+                      context: context,
+                      type: QuickAlertType.success,
+                      text: 'Produit ajouté au panier!',
+                    );
                   },
                   child: Text(
                     "Ajouter au panier".toUpperCase(),

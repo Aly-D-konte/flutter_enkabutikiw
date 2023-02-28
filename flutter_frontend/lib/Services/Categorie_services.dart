@@ -4,10 +4,7 @@ import 'package:http/http.dart' as http;
 
 import 'package:flutter_frontend/Services/globals.dart';
 
-class CategorieServices{
-
-
-
+class CategorieServices {
   static Future<ModelCategorie> ajoutCategorie(String nom, String image) async {
     Map data = {
       'nom': nom,
@@ -32,17 +29,19 @@ class CategorieServices{
     var url = Uri.parse(baseUrl + '/categorie/liste');
     http.Response response = await http.get(url, headers: headers);
 
-
     List responseList = jsonDecode(response.body);
     List<ModelCategorie> modelCategories = [];
     for (Map categorieMap in responseList) {
       ModelCategorie modelCategorie = ModelCategorie.fromMap(categorieMap);
       modelCategories.add(modelCategorie);
+      var jsonByte = response.bodyBytes;
+
+      //Convert to List<Map>
+      List data = json.decode(utf8.decode(jsonByte));
       print("ca marche");
       print(responseList);
       print("ca marche");
     }
     return modelCategories;
-
   }
 }

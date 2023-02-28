@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_frontend/Services/globals.dart';
 
 class ProfilePic extends StatelessWidget {
   const ProfilePic({
@@ -48,15 +49,14 @@ class ProfilePic extends StatelessWidget {
             padding: EdgeInsets.all(2),
             child: Column(
               children: [
-                Text("Aly KONTE"),
+                Text("$prenomuser $nomuser"),
                 SizedBox(
                   height: 10,
                 ),
-                Text("alykonte19@gmail.com"),
+                Text("$emailuser"),
               ],
             ),
           )
-         
         ],
       ),
     );

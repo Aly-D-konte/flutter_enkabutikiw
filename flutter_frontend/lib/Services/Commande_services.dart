@@ -25,8 +25,8 @@ class CommandeServices {
   // }
 
 //partie get
-  static Future<List<ModelCommande>> getCommande() async {
-    var url = Uri.parse(baseUrl + '/commande/liste');
+  static Future<List<ModelCommande>> getCommande(int id) async {
+    var url = Uri.parse(baseUrl + '/commande/liste/${id}');
     http.Response response = await http.get(url, headers: headers);
 
     //List responseList = jsonDecode(response.body);

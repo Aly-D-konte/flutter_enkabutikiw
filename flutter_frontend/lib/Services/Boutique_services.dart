@@ -3,11 +3,10 @@ import 'dart:convert';
 import 'package:flutter_frontend/Models/boutique.dart';
 import 'package:http/http.dart' as http;
 
+import '../Models/Paniers.dart';
 import 'globals.dart';
 
 class DatabaseServices {
-
-
   //La partie boutique debut
   static Future<ModelBoutiques> ajoutBoutique(String nom, String description,
       String adresse, String image, bool etat, String user) async {
@@ -38,7 +37,6 @@ class DatabaseServices {
     var url = Uri.parse(baseUrl + '/boutique/liste');
     http.Response response = await http.get(url, headers: headers);
 
-
     List responseList = jsonDecode(response.body);
     List<ModelBoutiques> modelboutiques = [];
     for (Map boutiqueMap in responseList) {
@@ -48,10 +46,46 @@ class DatabaseServices {
     return modelboutiques;
   }
 
-
   //finnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
 
 //La partie produits debuttttttttttttttttttttttttttt
 
+  static Future<List<Paniers>> getPanier(int id) async {
+    var url = Uri.parse(baseUrl + '/panier/PanierParUser/$id');
+    http.Response response = await http.get(url, headers: headers);
 
+    List responseList = jsonDecode(response.body);
+    print(responseList);
+    print('lolllllllllllll');
+    List<Paniers> paniers = [];
+
+    // for (Map<String, dynamic> panierMap in responseList) {
+    //   Paniers panier = Paniers.fromJson(panierMap);
+    //   print("caaaaa marche");
+    //   print(panierMap['user['nom']']);
+    //   paniers.add(panier);
+    // }
+
+    // return paniers;
+
+    if (response.statusCode == 200) {
+      List<Paniers> items = [];
+      //get the data from the response
+      String jsonString = response.body;
+      //Convert to List<Map>
+      var jsonByte = response.bodyBytes;
+
+      //Convert to List<Map>
+      List data = json.decode(utf8.decode(jsonByte));
+      //List data = jsonDecode(jsonString);
+      items = data.map((e) => Paniers.fromJson(e)).toList();
+
+      print("data");
+      print(items[0]);
+
+      return items;
+    } else {
+      throw ("Liste introuvable : ${response.body}");
+    }
+  }
 }

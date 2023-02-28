@@ -40,7 +40,7 @@ class _ProduitAffichageState extends State<ProduitAffichage> {
           Expanded(
             child: Container(
               width: MediaQuery.of(context).size.width * .5,
-             child: Card(
+              child: Card(
                 shadowColor: Colors.black,
                 elevation: 5,
                 child: Container(
@@ -67,10 +67,14 @@ class _ProduitAffichageState extends State<ProduitAffichage> {
                       InkWell(
                         onTap: () {
                           useindex = true;
-                         // selectedPageIndex = 5;
+                          // selectedPageIndex = 5;
                           modelProduit.add(widget.modelProduit);
                           Navigator.pop(context);
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailProduit(modelProduit: widget.modelProduit)));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => DetailProduit(
+                                      modelProduit: widget.modelProduit)));
                           // Navigator.push(
                           //   context,
                           //   MaterialPageRoute(
