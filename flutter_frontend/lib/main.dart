@@ -3,17 +3,16 @@ import 'package:flutter_frontend/Models/Boutique_data.dart';
 import 'package:flutter_frontend/pages/splashscreen.dart';
 import 'package:provider/provider.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-    const MyApp({super.key});
+  const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {  
+  Widget build(BuildContext context) {
     return ChangeNotifierProvider<BoutiqueData>(
       create: (context) => BoutiqueData(),
       child: MaterialApp(

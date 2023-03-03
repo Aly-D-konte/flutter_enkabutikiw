@@ -54,7 +54,7 @@ class ProfileBody extends StatelessWidget {
           text: "Déconnexion",
           press: () {
             Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => const LoginWidget()));
+                .push(MaterialPageRoute(builder: (_) =>  LoginWidget()));
           },
         ),
 

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_frontend/Models/Boutique_data.dart';
-import 'package:flutter_frontend/Models/ModelCategorie.dart';
 import 'package:flutter_frontend/pages/Boutique/Boutique_page.dart';
 import 'package:flutter_frontend/pages/Compte/PageCompe.dart';
 import 'package:flutter_frontend/pages/Categorie/PageCategorie.dart';
@@ -12,7 +10,6 @@ import 'package:get/get.dart';
 import '../../Controllers/Produit/produit_quantite.dart';
 import '../../Models/constante.dart';
 import '../panier/details.dart';
-import '../panier/panier_detail.dart';
 
 class Homepage extends StatefulWidget {
   Homepage({Key? key}) : super(key: key);
@@ -22,6 +19,9 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  Icon customIcon = const Icon(Icons.search);
+  Widget customSearchBar = const Text('Mon journal personnel');
+
   int curveindex = 0;
 
   final List<Widget> _pages = [
@@ -40,10 +40,42 @@ class _HomepageState extends State<Homepage> {
 
     return Scaffold(
       appBar: AppBar(
+        title: customSearchBar,
         elevation: 1,
         actions: [
           Row(
             children: [
+              // IconButton(
+              //   onPressed: () {
+              //     setState(() {
+              //       if (customIcon.icon == Icons.search) {
+              //         customIcon = const Icon(Icons.cancel);
+              //         customSearchBar = const ListTile(
+              //           leading: Icon(
+              //             Icons.search,
+              //             color: Colors.white,
+              //             size: 28,
+              //           ),
+              //           title: TextField(
+              //             decoration: InputDecoration(
+              //               hintText: 'type in journal name...',
+              //               hintStyle: TextStyle(
+              //                 color: Colors.white,
+              //                 fontSize: 18,
+              //                 fontStyle: FontStyle.italic,
+              //               ),
+              //               border: InputBorder.none,
+              //             ),
+              //             style: TextStyle(
+              //               color: Colors.white,
+              //             ),
+              //           ),
+              //         );
+              //       }
+              //     });
+              //   },
+              //   icon: customIcon,
+              // ),
               const Badge(
                 backgroundColor: Colors.red,
                 padding: EdgeInsets.all(2),

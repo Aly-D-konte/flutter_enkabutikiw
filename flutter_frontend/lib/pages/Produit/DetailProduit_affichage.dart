@@ -232,8 +232,7 @@ class DetailProduit extends StatelessWidget {
                                       SizedBox(
                                         width: 20,
                                       ),
-                                      Text(
-                                          " ${modelProduit.modelBoutiques!.nom}"),
+                                      Text(" KONTE SHOPS"),
                                     ],
                                   ),
                                 ),
@@ -251,8 +250,7 @@ class DetailProduit extends StatelessWidget {
                                       SizedBox(
                                         width: 20,
                                       ),
-                                      Text(
-                                          " ${modelProduit.modelCategorie!.nom}")
+                                      Text(" Sacs")
                                     ],
                                   ),
                                 ),

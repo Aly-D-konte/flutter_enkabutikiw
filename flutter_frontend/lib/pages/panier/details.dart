@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_frontend/Models/Boutique_data.dart';
 import 'package:flutter_frontend/pages/panier/panier_affichage.dart';
 import 'package:provider/provider.dart';

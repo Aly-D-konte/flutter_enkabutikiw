@@ -6,15 +6,21 @@ import 'package:http/http.dart';
 
 import '../je sais.dart';
 
-class LoginWidget extends StatelessWidget {
-  const LoginWidget({Key? key}) : super(key: key);
+class LoginWidget extends StatefulWidget {
+  LoginWidget({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    TextEditingController usernameController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-    AuthController authController = AuthController();
+  State<LoginWidget> createState() => _LoginWidgetState();
+}
 
+class _LoginWidgetState extends State<LoginWidget> {
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  AuthController authController = AuthController();
+  late String query;
+  bool notVisible = false;
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.blue,
         body: Container(
@@ -85,9 +91,22 @@ class LoginWidget extends StatelessWidget {
                               child: SizedBox(
                                 height: 50,
                                 child: TextFormField(
+                                  //pour cacher la visibilité d'un text
+                                  obscureText: true,
                                   //declaration du controler username
                                   controller: passwordController,
-                                  decoration: const InputDecoration(
+                                  decoration: InputDecoration(
+                                    //Le button qui gere la visibilité d'un text
+                                    suffixIcon: IconButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            notVisible = !notVisible;
+                                          });
+                                        },
+                                        icon: Icon(notVisible == true
+                                            ? Icons.visibility_off_outlined
+                                            : Icons.visibility_outlined),
+                                        style: ButtonStyle()),
                                     hintText: 'password',
                                     enabledBorder: OutlineInputBorder(),
                                     focusedBorder: OutlineInputBorder(),

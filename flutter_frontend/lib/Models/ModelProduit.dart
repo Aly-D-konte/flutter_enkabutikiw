@@ -53,6 +53,8 @@ class ModelProduit {
       //json['boutiqueid']
     );
   }
+
+  toLowerCase() {}
 }
 
 /* Map<String, dynamic> toJson() {

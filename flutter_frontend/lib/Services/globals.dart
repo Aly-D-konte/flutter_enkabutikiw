@@ -13,6 +13,7 @@ var usId;
 String? nomuser;
 String? prenomuser;
 String? emailuser;
+String? redirectUri;
 /*la partie get
   Future<http.Response> get(String url, Map<String, String> params) async {
     try {
