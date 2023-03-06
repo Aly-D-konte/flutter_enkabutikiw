@@ -51,7 +51,7 @@ class DatabaseServices {
 //La partie produits debuttttttttttttttttttttttttttt
 
   static Future<List<Paniers>> getPanier(int id) async {
-    var url = Uri.parse(baseUrl + '/panier/PanierParUser/2');
+    var url = Uri.parse(baseUrl + '/panier/PanierParUser/$id');
     http.Response response = await http.get(url, headers: headers);
 
     List responseList = jsonDecode(response.body);
@@ -79,15 +79,15 @@ class DatabaseServices {
       List data = json.decode(utf8.decode(jsonByte));
       //List data = jsonDecode(jsonString);
       items = data.map((e) => Paniers.fromJson(e)).toList();
-      for (int i = 0; i < items.length; i++) {
-        print(items[i].user!.adresse);
-        print("laaaaaaaaa");
-      }
+      // for (int i = 0; i < items.length; i++) {
+      //   print(items[i].user!.adresse);
+      //   print("laaaaaaaaa");
+      // }
 
       print("data");
-      print(items[0].user!.adresse);
-
-      return items;
+      //print(items[0].produits!.length);
+      return data.map((e) => Paniers.fromJson(e)).toList();
+      //return items;
     } else {
       throw ("Liste introuvable : ${response.body}");
     }

@@ -45,7 +45,8 @@ dependencies:
   get: ^4.6.5
   quickalert: ^1.0.1
   font_awesome_flutter: ^10.4.0
-  
+  form_validator: ^2.1.1
+    
 dev_dependencies:
   flutter_test:
     sdk: flutter

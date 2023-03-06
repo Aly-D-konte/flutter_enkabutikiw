@@ -6,9 +6,14 @@ import 'package:flutter_frontend/pages/Favorite/PageFavorite.dart';
 import 'package:flutter_frontend/pages/Produit/Page%20produit.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 import '../../Controllers/Produit/produit_quantite.dart';
+import '../../Models/Boutique_data.dart';
+import '../../Models/Paniers.dart';
 import '../../Models/constante.dart';
+import '../../Services/Boutique_services.dart';
+import '../../Services/globals.dart';
 import '../panier/details.dart';
 
 class Homepage extends StatefulWidget {
@@ -35,6 +40,21 @@ class _HomepageState extends State<Homepage> {
 
   @override
   Widget build(BuildContext context) {
+    List<Paniers>? paniers;
+
+    getPanier() async {
+      paniers = await DatabaseServices.getPanier(usId);
+      Provider.of<BoutiqueData>(context, listen: false).paniers = paniers!;
+      setState(() {});
+    }
+
+    @override
+    void initState() {
+      // TODO: implement initState
+      super.initState();
+      getPanier();
+    }
+
     ProduitQuantiteController produitQuantiteController =
         Get.put(ProduitQuantiteController());
 
@@ -93,7 +113,7 @@ class _HomepageState extends State<Homepage> {
                 padding: const EdgeInsets.all(3),
                 label: Center(
                     child: Text(
-                        produitQuantiteController.monPanier.length.toString())),
+                        '${Provider.of<BoutiqueData>(context, listen: false).paniers.length}')),
                 child: GestureDetector(
                   child: const Icon(Icons.shopping_cart, size: 30),
                   onTap: () {

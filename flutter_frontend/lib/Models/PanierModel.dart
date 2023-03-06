@@ -12,7 +12,7 @@ class ModelPanier {
   factory ModelPanier.fromMap(Map json) {
     return ModelPanier(
       id: json['id'],
-      modelProduit: ModelProduit.fromMap(json['modelProduit']),
+      modelProduit: ModelProduit.fromJson(json['modelProduit']),
       quantite: json['quantite'] ?? 0,
     );
   }

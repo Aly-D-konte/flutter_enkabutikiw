@@ -2,84 +2,74 @@ import 'package:flutter_frontend/Models/ModelCategorie.dart';
 import 'package:flutter_frontend/Models/boutique.dart';
 
 class ModelProduit {
-  final int id;
-  final String? nom;
-  final String? description;
-  final String? marque;
-  final int? prix;
-  final String? modele;
-  final String? capacite;
-  final String? image;
-  final int? quantiteDisponible;
-  final String? type;
-  final ModelCategorie? modelCategorie;
-  final ModelBoutiques? modelBoutiques;
-  //final int? user;
-  //final int? boutiqueid;
+  late final id;
+  String? nom;
+  String? description;
+  String? marque;
+  int? prix;
+  String? modele;
+  String? capacite;
+  String? image;
+  int? quantiteDisponible;
+  String? type;
+  User? user;
+  late final List<Boutiques> boutiques;
 
   ModelProduit(
-    this.id,
-    this.nom,
-    this.description,
-    this.marque,
-    this.prix,
-    this.modele,
-    this.capacite,
-    this.image,
-    this.quantiteDisponible,
-    this.type,
-    this.modelCategorie,
-    this.modelBoutiques,
-    // this.user,
-    // this.boutiqueid,
-  );
+      this.id,
+      this.nom,
+      this.description,
+      this.marque,
+      this.prix,
+      this.modele,
+      this.capacite,
+      this.image,
+      this.quantiteDisponible,
+      this.type,
+      this.user,
+      this.boutiques);
 
-  factory ModelProduit.fromMap(Map json) {
-    return ModelProduit(
-      json['id'],
-      json['nom'],
-      json['description'],
-      json['marque'],
-      json['prix'],
-      json['modele'],
-      json['capacite'],
-      json['image'],
-      json['quantiteDisponible'],
-      json['type'],
-      json['modelCategorie'],
-      json['modelBoutiques'],
-
-      //json['user'],
-      //json['boutiqueid']
-    );
+  ModelProduit.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    nom = json['nom'];
+    description = json['description'];
+    marque = json['marque'];
+    prix = json['prix'];
+    modele = json['modele'];
+    capacite = json['capacite'];
+    image = json['image'];
+    quantiteDisponible = json['quantite_disponible'];
+    type = json['type'];
+    user = json['user'] != null ? new User.fromJson(json['user']) : null;
+    if (json['boutiques'] != null) {
+      boutiques = <Boutiques>[];
+      json['boutiques'].forEach((v) {
+        boutiques.add(new Boutiques.fromJson(v));
+      });
+    }
   }
 
-  toLowerCase() {}
-}
-
-/* Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['nom'] = this.nom;
     data['description'] = this.description;
     data['marque'] = this.marque;
     data['prix'] = this.prix;
-    data['marque'] = this.marque;
+    data['modele'] = this.modele;
     data['capacite'] = this.capacite;
     data['image'] = this.image;
     data['quantite_disponible'] = this.quantiteDisponible;
     data['type'] = this.type;
-    if (this.modelCategorie != null) {
-      data['categorie'] = this.modelCategorie!.toJson();
-    }
     if (this.user != null) {
       data['user'] = this.user!.toJson();
     }
-    if (this.modelboutiques != null) {
-      data['boutiques'] = this.modelboutiques!.map((v) => v.toJson()).toList();
+    if (this.boutiques != null) {
+      data['boutiques'] = this.boutiques.map((v) => v.toJson()).toList();
     }
     return data;
-  }*/
+  }
+}
 
 class User {
   int? id;
@@ -160,6 +150,49 @@ class Roles {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['name'] = this.name;
+    return data;
+  }
+}
+
+class Boutiques {
+  int? id;
+  String? nom;
+  String? description;
+  String? adresse;
+  String? image;
+  bool? etat;
+  User? user;
+
+  Boutiques(
+      this.id,
+      this.nom,
+      this.description,
+      this.adresse,
+      this.image,
+      this.etat,
+      this.user);
+
+  Boutiques.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    nom = json['nom'];
+    description = json['description'];
+    adresse = json['adresse'];
+    image = json['image'];
+    etat = json['etat'];
+    user = json['user'] != null ? new User.fromJson(json['user']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['nom'] = this.nom;
+    data['description'] = this.description;
+    data['adresse'] = this.adresse;
+    data['image'] = this.image;
+    data['etat'] = this.etat;
+    if (this.user != null) {
+      data['user'] = this.user!.toJson();
+    }
     return data;
   }
 }

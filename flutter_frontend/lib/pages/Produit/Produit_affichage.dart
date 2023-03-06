@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_frontend/Controllers/Produit/produit_quantite.dart';
@@ -84,16 +86,24 @@ class _ProduitAffichageState extends State<ProduitAffichage> {
                         },
                         child: Container(
                           margin: const EdgeInsets.all(10),
-                          child: CachedNetworkImage(
+                          child: Image.file(
+                            File(
+                                "wamp64/www/images/${widget.modelProduit.image}"),
                             fit: BoxFit.cover,
                             height: 120,
                             width: 120,
-                            imageUrl: widget.modelProduit.image!,
-                            placeholder: (context, url) =>
-                                new CircularProgressIndicator(),
-                            errorWidget: (context, url, error) =>
-                                new Icon(Icons.electric_rickshaw_sharp),
                           ),
+
+                          // child: CachedNetworkImage(
+                          //   fit: BoxFit.cover,
+                          //   height: 120,
+                          //   width: 120,
+                          //   imageUrl: widget.modelProduit.image!,
+                          //   placeholder: (context, url) =>
+                          //       new CircularProgressIndicator(),
+                          //   errorWidget: (context, url, error) =>
+                          //       new Icon(Icons.electric_rickshaw_sharp),
+                          // ),
                         ),
                       ),
                       Container(

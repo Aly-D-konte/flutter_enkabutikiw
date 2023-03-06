@@ -12,7 +12,7 @@ class FavoriteController extends GetxController {
       nombreProduit++;
     } else {
       Get.snackbar("Existe déjà",
-          "Vous avez déjà ajouter cet ptoduit dans votre liste de favorite!!",
+          "Vous avez déjà ajouter cet produit dans votre liste de favorite!!",
           backgroundColor: Colors.red ,
           snackPosition: SnackPosition.BOTTOM,
           borderColor: Colors.orangeAccent,

@@ -3,14 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_frontend/Controllers/Produit/FavoriteController.dart';
 import 'package:flutter_frontend/Controllers/Produit/produit_quantite.dart';
-import 'package:flutter_frontend/Models/Boutique_data.dart';
 import 'package:flutter_frontend/Models/ModelProduit.dart';
-import 'package:flutter_frontend/pages/Menu/menuBottom.dart';
 import 'package:flutter_frontend/pages/panier/ajoutPanier.dart';
 import 'package:get/get.dart';
-import 'package:quickalert/quickalert.dart';
-
-import '../../Models/PanierModel.dart';
 
 class DetailProduit extends StatelessWidget {
   DetailProduit({super.key, required this.modelProduit});
@@ -60,21 +55,22 @@ class DetailProduit extends StatelessWidget {
 
                                 width: MediaQuery.of(context).size.width * .40,
                                 height: 200,
-                                child: Expanded(
-                                    child: Hero(
-                                  tag: modelProduit.id,
-                                  child: CachedNetworkImage(
-                                    fit: BoxFit.cover,
-                                    height: 120,
-                                    width: 120,
-                                    imageUrl: modelProduit.image!,
-                                    placeholder: (context, url) =>
-                                        const CircularProgressIndicator(),
-                                    errorWidget: (context, url, error) =>
-                                        const Icon(
-                                            Icons.electric_rickshaw_sharp),
-                                  ),
-                                ))),
+                                // child: Expanded(
+                                //     child: Hero(
+                                //   tag: modelProduit.id,
+                                //   // child: CachedNetworkImage(
+                                //   //   fit: BoxFit.cover,
+                                //   //   height: 120,
+                                //   //   width: 120,
+                                //   //   imageUrl: modelProduit.image!,
+                                //   //   placeholder: (context, url) =>
+                                //   //       const CircularProgressIndicator(),
+                                //   //   errorWidget: (context, url, error) =>
+                                //   //       const Icon(
+                                //   //           Icons.electric_rickshaw_sharp),
+                                //   // ),
+                                // ))
+                              ),
                             //container contenant la description
                             Expanded(
                               child: SizedBox(
@@ -123,74 +119,74 @@ class DetailProduit extends StatelessWidget {
                       ),
 
                       //la partie d'ajout de quantite
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Container(
-                            child: OutlinedButton(
-                              style: OutlinedButton.styleFrom(
-                                  padding: EdgeInsets.zero,
-                                  backgroundColor: Colors.orangeAccent,
-                                  elevation: 20,
-                                  minimumSize: Size(40, 30),
-                                  // shadowColor: Colors.blue
-                                  shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(10),
-                                          bottomLeft: Radius.circular(10)))),
-                              onPressed: () {
-                                produitQuantiteController.deleteQuantite();
-                              },
-                              child: const Icon(
-                                CupertinoIcons.minus,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          //La partie nombre de quantité
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 5),
-                            child: Obx(
-                              () => Text(
-                                produitQuantiteController.nombreQuantite
-                                    .toString()
-                                    .padLeft(2, "0"),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headlineSmall!
-                                    .copyWith(color: Colors.black),
-                              ),
-                            ),
-                          ),
-                          //la partie plus
-                          Container(
-                            child: OutlinedButton(
-                              style: OutlinedButton.styleFrom(
-                                  padding: EdgeInsets.zero,
-                                  backgroundColor: Colors.orangeAccent,
-                                  elevation: 20,
-                                  minimumSize: Size(40, 30),
-                                  // shadowColor: Colors.blue
-                                  shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.only(
-                                          topRight: Radius.circular(10),
-                                          bottomRight: Radius.circular(10)))),
-                              onPressed: () {
-                                produitQuantiteController.addQuantite();
-                                QuickAlert.show(
-                                  context: context,
-                                  type: QuickAlertType.success,
-                                  text: 'Transaction Completed Successfully!',
-                                );
-                              },
-                              child: const Icon(
-                                CupertinoIcons.plus,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.end,
+                      //   children: [
+                      //     Container(
+                      //       child: OutlinedButton(
+                      //         style: OutlinedButton.styleFrom(
+                      //             padding: EdgeInsets.zero,
+                      //             backgroundColor: Colors.orangeAccent,
+                      //             elevation: 20,
+                      //             minimumSize: Size(40, 30),
+                      //             // shadowColor: Colors.blue
+                      //             shape: const RoundedRectangleBorder(
+                      //                 borderRadius: BorderRadius.only(
+                      //                     topLeft: Radius.circular(10),
+                      //                     bottomLeft: Radius.circular(10)))),
+                      //         onPressed: () {
+                      //           produitQuantiteController.deleteQuantite();
+                      //         },
+                      //         child: const Icon(
+                      //           CupertinoIcons.minus,
+                      //           color: Colors.white,
+                      //         ),
+                      //       ),
+                      //     ),
+                      //     //La partie nombre de quantité
+                      //     Padding(
+                      //       padding: const EdgeInsets.symmetric(horizontal: 5),
+                      //       child: Obx(
+                      //         () => Text(
+                      //           produitQuantiteController.nombreQuantite
+                      //               .toString()
+                      //               .padLeft(2, "0"),
+                      //           style: Theme.of(context)
+                      //               .textTheme
+                      //               .headlineSmall!
+                      //               .copyWith(color: Colors.black),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //     //la partie plus
+                      //     Container(
+                      //       child: OutlinedButton(
+                      //         style: OutlinedButton.styleFrom(
+                      //             padding: EdgeInsets.zero,
+                      //             backgroundColor: Colors.orangeAccent,
+                      //             elevation: 20,
+                      //             minimumSize: Size(40, 30),
+                      //             // shadowColor: Colors.blue
+                      //             shape: const RoundedRectangleBorder(
+                      //                 borderRadius: BorderRadius.only(
+                      //                     topRight: Radius.circular(10),
+                      //                     bottomRight: Radius.circular(10)))),
+                      //         onPressed: () {
+                      //           produitQuantiteController.addQuantite();
+                      //           // QuickAlert.show(
+                      //           //   context: context,
+                      //           //   type: QuickAlertType.success,
+                      //           //   text: 'Transaction Completed Successfully!',
+                      //           // );
+                      //         },
+                      //         child: const Icon(
+                      //           CupertinoIcons.plus,
+                      //           color: Colors.white,
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -232,7 +228,7 @@ class DetailProduit extends StatelessWidget {
                                       SizedBox(
                                         width: 20,
                                       ),
-                                      Text(" KONTE SHOPS"),
+                                      Text("yuezyfe"),
                                     ],
                                   ),
                                 ),
